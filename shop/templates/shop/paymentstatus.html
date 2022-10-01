@@ -1,0 +1,34 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Payment Confirmation{% endblock %}
+{% block body %}
+<div class="container">
+    {{response}}
+    <div class="col my-4">
+
+        <h2>Payment status regarding your order is </h2><BR>
+        {% if response.RESPCODE == '01' %}
+        PAYMENT IS SUCCESSFULL !!!<br>
+        Your order has been successfully placed.
+        Your orderId is {{response.ORDERID}}
+        {% else %}
+        SOME ERROR HAS BEEN OCCURED !!!<br>
+        Please try again later.
+        {% endif%}
+        <button id="redirect">Home</button>
+
+    </div>
+
+</div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+    
+cart = JSON.parse(localStorage.getItem('cart'));
+localStorage.clear();
+cart = {};
+updateCart(cart);
+document.getElementById('redirect').onclick  = function(){
+    location.href="shop/index.html/";
+}
+</script>
+{% endblock %}
