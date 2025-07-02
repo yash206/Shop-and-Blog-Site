@@ -12,7 +12,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to="shop/images", default="")
 
     def __str__(self):
-        return self.product_name[:20]
+        return self.product_name[:25]
 
 
 class Contact(models.Model):
